@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ls /$HOME/Documents/pdfs | dmenu -l 10 | xargs -I {} zathura /$HOME/Documents/pdfs/"{}"
