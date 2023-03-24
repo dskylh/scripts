@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Take a screenshot with Flameshot
+flameshot gui -r > /tmp/screenshot.png
+
+# Extract the text from the screenshot with Tesseract OCR
+tesseract /tmp/screenshot.png /tmp/screenshot.txt
+
+# Copy the text to the clipboard
+xclip -sel clip < /tmp/screenshot.txt
+
