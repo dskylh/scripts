@@ -4,11 +4,11 @@
 flameshot gui -r > /tmp/screenshot.png
 
 # Extract the text from the screenshot with Tesseract OCR
-tesseract /tmp/screenshot.png /tmp/screenshot.txt
+tesseract /tmp/screenshot.png /tmp/screenshot
 
-# Copy the text to the primary selection using xclip
-xclip -selection primary < /tmp/screenshot.txt
+# Copy the text to the primary selection using Klipper
+qdbus org.kde.klipper /klipper setClipboardContents "$(cat /tmp/screenshot.txt)" 
 
-# Show a notification to indicate that the text has been copied to the clipboard
+# Show a notification to indicate that the text has been copied to the primary selection
 notify-send "Screenshot text copied to primary selection"
 
