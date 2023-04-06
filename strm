@@ -3,7 +3,7 @@
 cd $HOME/Downloads/KeyOverlay-ubuntu-latest/
 ./KeyOverlay &
 
-cd $HOME/Downloads/gosumemory_linux_amd64/
+cd $HOME/Downloads/gosumem/
 ./ppcount.sh &
 
 flatpak run com.obsproject.Studio &
