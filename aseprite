@@ -1,0 +1,2 @@
+#!/bin/bash
+exec "$HOME/github-stuff/aseprite/Aseprite-v1.3-rc6-Source/build/bin/aseprite"
