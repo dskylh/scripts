@@ -22,6 +22,8 @@ SCREENSHOT_FULLNAME="$SWAYSHOT_SCREENSHOTS"/screenshot_${SCREENSHOT_TIMESTAMP}.p
 
 readonly filter='recurse(.nodes[], .floating_nodes[]) | select(.focused and .pid).rect | "\(.x),\(.y) \(.width)x\(.height)"'
 
+# grim -g "$(hyprctl clients -j | jq --raw-output "$
+
 make_screenshot() {
 	case "$1" in
 		-h|--help)
@@ -32,7 +34,9 @@ make_screenshot() {
 			grim -g "$(slurp -b '#AFAFAFAF' -c '#FF3F3FAF' -s '#00000000' -w 3 -d)" "$2"
 			;;
 		window)
-			grim -g "$(swaymsg --type get_tree --raw | jq --raw-output "${filter}")" "$2"
+			w_pos=$(hyprctl activewindow | grep 'at:' | cut -d':' -f2 | tr -d ' ' | tail -n1)
+			w_size=$(hyprctl activewindow | grep 'size:' | cut -d':' -f2 | tr -d ' ' | tail -n1 | sed s/,/x/g)
+			grim -g "$w_pos $w_size" "$2"
 			;;
 		*)
 			grim -o "$(swaymsg --type get_outputs --raw | jq --raw-output '.[] | select(.focused) | .name')" "$2"
@@ -45,7 +49,7 @@ copy_to_clipboard() {
 		if [ -z $SWAYSHOT_WL_COPY_FILE ]; then
 			printf "%s" "$1" | wl-copy
 		else
-			wl-copy < "$SCREENSHOT_FULLNAME"
+			wl-copy < $SCREENSHOT_FULLNAME
 		fi
 	elif type xsel >/dev/null  2>&1; then
 		printf "%s" "$1" | xsel --clipboard
@@ -94,6 +98,10 @@ case "$2" in
 				show_message "Screenshot was copied to clipboard.\\nFeel free to paste it." "$SCREENSHOT_FULLNAME" "Screenshot image"
 			fi
 		fi
+		;;
+	copy)
+		wl-copy < "$SCREENSHOT_FULLNAME"
+		# echo $SCREENSHOT_FULLNAME
 		;;
 	*)
 		copy_to_clipboard "$SCREENSHOT_FULLNAME"

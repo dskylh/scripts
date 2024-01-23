@@ -1,0 +1,2 @@
+#!/bin/bash
+wl-paste | curl -F'file=@-' -Fsecret= https://0x0.st 2>/dev/null | wl-copy
