@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Save clipboard content
+clipboard=$(xclip -o -selection clipboard)
+sleep 0.5
+
+# Salary: 1739, 1029
+xdotool mousemove --sync 1739 1029 click 1
+sleep 0.01
+
+# Add New Salary 1716, 278
+xdotool mousemove --sync 1716 278 click 1
+sleep 0.01
+
+# Current Salary 1807, 328
+xdotool mousemove --sync 1807 328 click 1
+sleep 0.01
+
+# Next 1805, 394
+xdotool mousemove --sync 1805 394 click 1
+sleep 0.01
+
+# Yearly 1807, 328
+xdotool mousemove --sync 1807 328 click 1
+sleep 0.01
+
+# Next 1805, 394
+xdotool mousemove --sync 1805 394 click 1
+sleep 0.01
+
+# Next 1805, 394
+xdotool mousemove --sync 1806 395 click 1
+sleep 0.01
+
+# Fiat Dropdown 1622, 325
+# xdotool mousemove --sync 1622 325 click 1
+# sleep 0.01
+
+# GBP 1624, 376
+# xdotool mousemove --sync 1629 394 click 1
+# sleep 0.01
+
+# Click the input 1724, 333 
+xdotool mousemove --sync 1724 333 click 1
+sleep 0.01
+
+# Paste the content of clipboard
+xdotool type "$clipboard"
+xdotool type "000"
+sleep 0.01
+
+# Add Salary 1796, 389
+xdotool mousemove --sync 1796 389 click 1
+sleep 0.01
+
+# press x to close window
+# xdotool key "x"
+

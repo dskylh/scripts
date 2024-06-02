@@ -1,0 +1,4 @@
+#!/bin/bash
+tmux new-session -d -s silly-tavern -c /home/taha/github-stuff/SillyTavern 'git fetch & git pull & ./start.sh &&' &&
+tmux new-session -d -s text-generation-webui -c /home/taha/tera/github-stuff-tera/text-generation-webui/ './update_linux.sh & ./start_linux.sh --api && xdg-open http://127.0.0.1:7860 &&' &&
+tmux new-session -d -s extras -c /home/taha/tera/github-stuff-tera/SillyTavern-extras/  '~/tera/github-stuff-tera/SillyTavern-extras/venv/bin/python server.py --enable-modules=chromadb' &&

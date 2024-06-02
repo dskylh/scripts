@@ -1,0 +1,3 @@
+#!/bin/bash
+paru -Qqe > /home/taha/.config/.pacman-backup 
+flatpak list --app > /home/taha/.config/flatbak
